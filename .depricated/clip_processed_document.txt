@@ -1,0 +1,62 @@
+
+    # Comparative Analysis of PDF Ingestion Strategies
+    
+    ## Introduction
+    
+    This report presents a comparative analysis of different PDF ingestion strategies
+    for large language model applications. We evaluated three main approaches:
+    structured chunking, fixed-size rolling windows, and sentence-level overlap chunking.
+    
+    ## Performance Comparison
+    
+    
+
+FIGURE 1:
+Table: An image of type table related to PDF processing. Context suggests it's related to: Bar chart comparing retrieval performance...
+
+Extracted Text: Sample text extracted from the image
+
+
+
+    
+    As shown in Figure 1, the sentence-level overlap chunking strategy achieved the
+    highest retrieval performance, followed by structured chunking and fixed-size
+    rolling windows.
+    
+    ## Error Analysis
+    
+    
+
+FIGURE 2:
+Scatter Plot: An image of type scatter plot related to PDF processing. Context suggests it's related to: Pie chart showing distribution of error types...
+
+Extracted Text: Sample text extracted from the image
+
+
+
+    
+    Figure 2 illustrates the distribution of error types across all strategies.
+    Semantic errors were the most common, followed by boundary errors and context loss.
+    
+    ## Performance Across Document Types
+    
+    
+
+FIGURE 3:
+Flowchart: An image of type flowchart related to PDF processing. Context suggests it's related to: Line graph showing performance trends...
+
+Extracted Text: Sample text extracted from the image
+
+
+
+    
+    Figure 3 shows how each strategy performs across different document types.
+    Structured chunking performs best on technical documents, while sentence-level
+    overlap excels on narrative text.
+    
+    ## Conclusion
+    
+    Based on our analysis, we recommend using sentence-level overlap chunking for
+    general-purpose applications, with structured chunking as a strong alternative
+    for technical documents with complex layouts.
+    
