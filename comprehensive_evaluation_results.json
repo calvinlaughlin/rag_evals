@@ -1,31 +1,5 @@
 {
   "individual_documents": {
-    "PDF Ingestion Strategies": {
-      "Structured Chunking": {
-        "precision": 0.2222222222222222,
-        "recall": 0.4444444444444444,
-        "f1": 0.27777777777777773,
-        "content_quality": 0.28148148148148144,
-        "num_chunks": 9,
-        "avg_chunk_length": 587.6666666666666
-      },
-      "Fixed-Size Rolling Window": {
-        "precision": 0.2222222222222222,
-        "recall": 0.6666666666666666,
-        "f1": 0.3333333333333333,
-        "content_quality": 0.5722222222222223,
-        "num_chunks": 3,
-        "avg_chunk_length": 2933.6666666666665
-      },
-      "Sentence Overlap Chunking": {
-        "precision": 0.2222222222222222,
-        "recall": 0.4166666666666667,
-        "f1": 0.2833333333333334,
-        "content_quality": 0.3037037037037037,
-        "num_chunks": 6,
-        "avg_chunk_length": 1287.3333333333333
-      }
-    },
     "Lemis": {
       "Structured Chunking": {
         "precision": 0.05555555555555555,
@@ -160,87 +134,86 @@
   "strategy_summaries": {
     "Structured Chunking": {
       "precision": {
-        "mean": 0.0925925925925926,
-        "std": 0.07635380788180852
+        "mean": 0.06666666666666668,
+        "std": 0.05443310539518173
       },
       "recall": {
-        "mean": 0.13310185185185183,
-        "std": 0.1685091381699414
+        "mean": 0.07083333333333333,
+        "std": 0.1039720404011828
       },
       "f1": {
-        "mean": 0.09486531986531983,
-        "std": 0.10149592064246542
+        "mean": 0.05828282828282828,
+        "std": 0.06581819008583842
       },
       "content_quality": {
-        "mean": 0.13271604938271606,
-        "std": 0.07563869689260679
+        "mean": 0.10296296296296296,
+        "std": 0.03942052830856279
       },
-      "avg_chunks": 106.16666666666667,
-      "num_documents": 6
+      "avg_chunks": 125.6,
+      "num_documents": 5
     },
     "Fixed-Size Rolling Window": {
       "precision": {
-        "mean": 0.22222222222222218,
-        "std": 0.08486251286955258
+        "mean": 0.22222222222222224,
+        "std": 0.09296222517045283
       },
       "recall": {
-        "mean": 0.4361111111111111,
-        "std": 0.21739549781247952
+        "mean": 0.39,
+        "std": 0.2096558025802185
       },
       "f1": {
-        "mean": 0.28472222222222215,
-        "std": 0.11531124012326566
+        "mean": 0.27499999999999997,
+        "std": 0.12405196043952263
       },
       "content_quality": {
-        "mean": 0.5311728395061729,
-        "std": 0.17335818338627623
+        "mean": 0.522962962962963,
+        "std": 0.18883659406814993
       },
-      "avg_chunks": 383.8333333333333,
-      "num_documents": 6
+      "avg_chunks": 460.0,
+      "num_documents": 5
     },
     "Sentence Overlap Chunking": {
       "precision": {
-        "mean": 0.14814814814814814,
-        "std": 0.08881169487616147
+        "mean": 0.1333333333333333,
+        "std": 0.090267093384844
       },
       "recall": {
-        "mean": 0.15462962962962964,
-        "std": 0.13132815786422566
+        "mean": 0.10222222222222221,
+        "std": 0.0649406186497887
       },
       "f1": {
-        "mean": 0.14212962962962963,
-        "std": 0.09227375661108682
+        "mean": 0.11388888888888889,
+        "std": 0.07370277311900887
       },
       "content_quality": {
-        "mean": 0.21543209876543212,
-        "std": 0.060883101263891126
+        "mean": 0.19777777777777777,
+        "std": 0.050774522412330714
       },
-      "avg_chunks": 727.5,
-      "num_documents": 6
+      "avg_chunks": 871.8,
+      "num_documents": 5
     }
   },
   "final_metrics": {
     "Fixed-Size Rolling Window": {
-      "retrieval_accuracy": 0.28472222222222215,
-      "answer_quality": 0.5311728395061729,
-      "factual_consistency": 0.2444444444444444
+      "retrieval_accuracy": 0.27499999999999997,
+      "answer_quality": 0.522962962962963,
+      "factual_consistency": 0.2444444444444445
     },
     "Sentence Overlap Chunking": {
-      "retrieval_accuracy": 0.14212962962962963,
-      "answer_quality": 0.21543209876543212,
-      "factual_consistency": 0.16296296296296298
+      "retrieval_accuracy": 0.11388888888888889,
+      "answer_quality": 0.19777777777777777,
+      "factual_consistency": 0.14666666666666664
     },
     "Structured Chunking": {
-      "retrieval_accuracy": 0.09486531986531983,
-      "answer_quality": 0.13271604938271606,
-      "factual_consistency": 0.10185185185185187
+      "retrieval_accuracy": 0.05828282828282828,
+      "answer_quality": 0.10296296296296296,
+      "factual_consistency": 0.07333333333333335
     }
   },
   "evaluation_info": {
-    "num_documents": 6,
+    "num_documents": 5,
     "num_queries": 6,
     "documents_tested": [
-      "PDF Ingestion Strategies",
       "Lemis",
       "Neural Networks Paper",
       "Nlp Transformers Paper",

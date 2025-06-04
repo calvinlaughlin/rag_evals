@@ -164,10 +164,9 @@ def evaluate_document_strategy(doc_path: str, doc_name: str, strategy_name: str,
     }
 
 def main():
-    print("🔬 COMPREHENSIVE MULTI-DOCUMENT EVALUATION")
+    print("COMPREHENSIVE MULTI-DOCUMENT EVALUATION")
     print("=" * 70)
     print("Testing all chunking strategies across multiple documents")
-    print("Generating REAL performance metrics for your presentation")
     print()
     
     # Get test documents
@@ -188,7 +187,7 @@ def main():
     
     # Process each document
     for doc_path, doc_name in test_documents:
-        print(f"📄 Processing: {doc_name}")
+        print(f"Processing: {doc_name}")
         print("-" * 50)
         
         try:
@@ -215,13 +214,13 @@ def main():
             all_results[doc_name] = doc_results
             
         except Exception as e:
-            print(f"  ❌ Error processing {doc_name}: {e}")
+            print(f"  Error processing {doc_name}: {e}")
             continue
         
         print()
     
     # Calculate overall strategy performance
-    print("📊 CALCULATING OVERALL STRATEGY PERFORMANCE")
+    print("CALCULATING OVERALL STRATEGY PERFORMANCE")
     print("=" * 70)
     
     strategies = ['Structured Chunking', 'Fixed-Size Rolling Window', 'Sentence Overlap Chunking']
@@ -267,15 +266,15 @@ def main():
             }
             
             print(f"{strategy}:")
-            print(f"  • Precision: {np.mean(precisions):.3f} ± {np.std(precisions):.3f}")
-            print(f"  • Recall:    {np.mean(recalls):.3f} ± {np.std(recalls):.3f}")
-            print(f"  • F1 Score:  {np.mean(f1s):.3f} ± {np.std(f1s):.3f}")
-            print(f"  • Quality:   {np.mean(qualities):.3f} ± {np.std(qualities):.3f}")
-            print(f"  • Avg Chunks: {np.mean(chunk_counts):.1f}")
+            print(f"  Precision: {np.mean(precisions):.3f} ± {np.std(precisions):.3f}")
+            print(f"  Recall:    {np.mean(recalls):.3f} ± {np.std(recalls):.3f}")
+            print(f"  F1 Score:  {np.mean(f1s):.3f} ± {np.std(f1s):.3f}")
+            print(f"  Quality:   {np.mean(qualities):.3f} ± {np.std(qualities):.3f}")
+            print(f"  Avg Chunks: {np.mean(chunk_counts):.1f}")
             print()
     
     # Generate final presentation metrics
-    print("🎯 FINAL METRICS FOR YOUR PRESENTATION")
+    print("FINAL METRICS SUMMARY")
     print("=" * 70)
     
     # Sort strategies by F1 performance
@@ -305,7 +304,7 @@ def main():
         }
     
     print()
-    print("📈 AS PERCENTAGES (FOR CHARTS):")
+    print("AS PERCENTAGES:")
     print("-" * 70)
     print("Strategy                 | Retrieval Acc | Answer Quality | Factual Consistency")
     print("-" * 70)
@@ -333,10 +332,9 @@ def main():
     with open('comprehensive_evaluation_results.json', 'w') as f:
         json.dump(save_data, f, indent=2)
     
-    print(f"\n✅ COMPREHENSIVE EVALUATION COMPLETE!")
-    print(f"✅ Tested {len(test_documents)} documents with {len(queries)} queries each")
-    print(f"✅ Results saved to comprehensive_evaluation_results.json")
-    print(f"✅ These are REAL metrics from your actual working code!")
+    print(f"\nEVALUATION COMPLETE")
+    print(f"Tested {len(test_documents)} documents with {len(queries)} queries each")
+    print(f"Results saved to comprehensive_evaluation_results.json")
     
     return final_metrics
 
