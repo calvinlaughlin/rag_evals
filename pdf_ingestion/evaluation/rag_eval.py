@@ -26,11 +26,15 @@ import os
 import textwrap
 from typing import List, Dict, Any
 
+from dotenv import load_dotenv
 from openai import OpenAI
 
 from pdf_ingestion.ingest.strategies import get_all_strategies, process_document
 from pdf_ingestion.utils.pdf_utils import load_document
 from pdf_ingestion.retrieval.retriever import ChunkRetriever
+
+# Load environment variables
+load_dotenv()
 
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:

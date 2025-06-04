@@ -194,3 +194,49 @@ def process_document(text: str, strategies=None) -> Dict[str, List[Dict[str, Any
         results[str(strategy)] = strategy.process(text)
     
     return results 
+
+# ---------------------------------------------------------------------------
+# Multimodal helpers – attach figure chunks to every strategy
+# ---------------------------------------------------------------------------
+
+from pdf_ingestion.utils.pdf_utils import is_pdf, extract_pdf_figures, pdf_to_text
+from pdf_ingestion.ingest.figure_adapter import build_figure_chunks
+
+
+def _attach_figure_chunks(
+    chunks_by_strategy: Dict[str, List[Dict[str, Any]]],
+    figure_chunks: List[Dict[str, Any]],
+) -> Dict[str, List[Dict[str, Any]]]:
+    """Return *chunks_by_strategy* with *figure_chunks* appended to each list."""
+    if not figure_chunks:
+        return chunks_by_strategy
+
+    for strat, ch_list in chunks_by_strategy.items():
+        # We copy to avoid mutating in-place when callers might reuse reference
+        chunks_by_strategy[strat] = ch_list + list(figure_chunks)
+    return chunks_by_strategy
+
+
+def process_pdf(pdf_path: str, strategies=None) -> Dict[str, List[Dict[str, Any]]]:
+    """End-to-end processing for a **PDF** file including figure extraction.
+
+    1. Extract plain text (``pdf_to_text``)
+    2. Chunk text via :func:`process_document`
+    3. Extract images via :func:`extract_pdf_figures` + CLIP and convert to
+       pseudo-text figure chunks
+    4. Append figure chunks to every strategy so they are included during
+       retrieval.
+    """
+    if not is_pdf(pdf_path):
+        raise ValueError("process_pdf can only be used with .pdf files")
+
+    # --- Text + standard chunking ---
+    text = pdf_to_text(pdf_path)
+    chunks_by_strategy = process_document(text, strategies=strategies)
+
+    # --- Figures ---
+    figures = extract_pdf_figures(pdf_path)
+    figure_chunks = build_figure_chunks(figures)
+
+    # --- Combine ---
+    return _attach_figure_chunks(chunks_by_strategy, figure_chunks) 

@@ -1,0 +1,41 @@
+{
+  "document": "sample_document.txt",
+  "queries": [
+    {
+      "id": 1,
+      "query": "What is Reducto?",
+      "relevant_chunks": {
+        "Structured Chunking (Reducto-style)": [1, 2, 7],
+        "Fixed-Size Rolling Window (size=500, stride=250)": [0, 1],
+        "Sentence Overlap Chunking (size=10, overlap=3)": [0, 1, 3]
+      }
+    },
+    {
+      "id": 2,
+      "query": "How does fixed-size rolling window work?",
+      "relevant_chunks": {
+        "Structured Chunking (Reducto-style)": [3, 7],
+        "Fixed-Size Rolling Window (size=500, stride=250)": [0, 1],
+        "Sentence Overlap Chunking (size=10, overlap=3)": [2, 3]
+      }
+    },
+    {
+      "id": 3,
+      "query": "What are the benefits of sentence-level overlap chunking?",
+      "relevant_chunks": {
+        "Structured Chunking (Reducto-style)": [4, 7],
+        "Fixed-Size Rolling Window (size=500, stride=250)": [1, 2],
+        "Sentence Overlap Chunking (size=10, overlap=3)": [2, 3]
+      }
+    },
+    {
+      "id": 4,
+      "query": "How do you evaluate PDF ingestion strategies?",
+      "relevant_chunks": {
+        "Structured Chunking (Reducto-style)": [5, 6, 7],
+        "Fixed-Size Rolling Window (size=500, stride=250)": [2],
+        "Sentence Overlap Chunking (size=10, overlap=3)": [3, 4]
+      }
+    }
+  ]
+} 

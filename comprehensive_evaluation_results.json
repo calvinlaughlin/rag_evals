@@ -1,0 +1,224 @@
+{
+  "individual_documents": {
+    "Lemis": {
+      "Structured Chunking": {
+        "precision": 0.05555555555555555,
+        "recall": 0.027777777777777776,
+        "f1": 0.037037037037037035,
+        "content_quality": 0.08333333333333333,
+        "num_chunks": 465,
+        "avg_chunk_length": 6946.7591397849465
+      },
+      "Fixed-Size Rolling Window": {
+        "precision": 0.05555555555555555,
+        "recall": 0.03333333333333333,
+        "f1": 0.041666666666666664,
+        "content_quality": 0.1574074074074074,
+        "num_chunks": 2275,
+        "avg_chunk_length": 2837.112087912088
+      },
+      "Sentence Overlap Chunking": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "content_quality": 0.10185185185185185,
+        "num_chunks": 4294,
+        "avg_chunk_length": 1080.8455985095482
+      }
+    },
+    "Neural Networks Paper": {
+      "Structured Chunking": {
+        "precision": 0.05555555555555555,
+        "recall": 0.020833333333333332,
+        "f1": 0.030303030303030304,
+        "content_quality": 0.12314814814814816,
+        "num_chunks": 26,
+        "avg_chunk_length": 346.6923076923077
+      },
+      "Fixed-Size Rolling Window": {
+        "precision": 0.2222222222222222,
+        "recall": 0.6666666666666666,
+        "f1": 0.3333333333333333,
+        "content_quality": 0.6962962962962962,
+        "num_chunks": 5,
+        "avg_chunk_length": 3203.0
+      },
+      "Sentence Overlap Chunking": {
+        "precision": 0.1111111111111111,
+        "recall": 0.06666666666666667,
+        "f1": 0.08333333333333333,
+        "content_quality": 0.21481481481481488,
+        "num_chunks": 16,
+        "avg_chunk_length": 772.25
+      }
+    },
+    "Nlp Transformers Paper": {
+      "Structured Chunking": {
+        "precision": 0.16666666666666666,
+        "recall": 0.2777777777777778,
+        "f1": 0.18703703703703703,
+        "content_quality": 0.1648148148148148,
+        "num_chunks": 43,
+        "avg_chunk_length": 259.0232558139535
+      },
+      "Fixed-Size Rolling Window": {
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "f1": 0.39999999999999997,
+        "content_quality": 0.6166666666666666,
+        "num_chunks": 6,
+        "avg_chunk_length": 3405.1666666666665
+      },
+      "Sentence Overlap Chunking": {
+        "precision": 0.27777777777777773,
+        "recall": 0.18888888888888888,
+        "f1": 0.2222222222222222,
+        "content_quality": 0.23703703703703702,
+        "num_chunks": 19,
+        "avg_chunk_length": 787.0526315789474
+      }
+    },
+    "Computer Vision Paper": {
+      "Structured Chunking": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "content_quality": 0.04722222222222222,
+        "num_chunks": 44,
+        "avg_chunk_length": 300.25
+      },
+      "Fixed-Size Rolling Window": {
+        "precision": 0.2222222222222222,
+        "recall": 0.3333333333333333,
+        "f1": 0.26666666666666666,
+        "content_quality": 0.5944444444444444,
+        "num_chunks": 7,
+        "avg_chunk_length": 3496.1428571428573
+      },
+      "Sentence Overlap Chunking": {
+        "precision": 0.16666666666666666,
+        "recall": 0.14444444444444446,
+        "f1": 0.15277777777777776,
+        "content_quality": 0.24074074074074073,
+        "num_chunks": 19,
+        "avg_chunk_length": 1049.7368421052631
+      }
+    },
+    "Reinforcement Learning Paper": {
+      "Structured Chunking": {
+        "precision": 0.05555555555555555,
+        "recall": 0.027777777777777776,
+        "f1": 0.037037037037037035,
+        "content_quality": 0.09629629629629628,
+        "num_chunks": 50,
+        "avg_chunk_length": 244.68
+      },
+      "Fixed-Size Rolling Window": {
+        "precision": 0.27777777777777773,
+        "recall": 0.4166666666666667,
+        "f1": 0.3333333333333333,
+        "content_quality": 0.5499999999999999,
+        "num_chunks": 7,
+        "avg_chunk_length": 3235.5714285714284
+      },
+      "Sentence Overlap Chunking": {
+        "precision": 0.1111111111111111,
+        "recall": 0.1111111111111111,
+        "f1": 0.1111111111111111,
+        "content_quality": 0.19444444444444442,
+        "num_chunks": 11,
+        "avg_chunk_length": 1530.5454545454545
+      }
+    }
+  },
+  "strategy_summaries": {
+    "Structured Chunking": {
+      "precision": {
+        "mean": 0.06666666666666668,
+        "std": 0.05443310539518173
+      },
+      "recall": {
+        "mean": 0.07083333333333333,
+        "std": 0.1039720404011828
+      },
+      "f1": {
+        "mean": 0.05828282828282828,
+        "std": 0.06581819008583842
+      },
+      "content_quality": {
+        "mean": 0.10296296296296296,
+        "std": 0.03942052830856279
+      },
+      "avg_chunks": 125.6,
+      "num_documents": 5
+    },
+    "Fixed-Size Rolling Window": {
+      "precision": {
+        "mean": 0.22222222222222224,
+        "std": 0.09296222517045283
+      },
+      "recall": {
+        "mean": 0.39,
+        "std": 0.2096558025802185
+      },
+      "f1": {
+        "mean": 0.27499999999999997,
+        "std": 0.12405196043952263
+      },
+      "content_quality": {
+        "mean": 0.522962962962963,
+        "std": 0.18883659406814993
+      },
+      "avg_chunks": 460.0,
+      "num_documents": 5
+    },
+    "Sentence Overlap Chunking": {
+      "precision": {
+        "mean": 0.1333333333333333,
+        "std": 0.090267093384844
+      },
+      "recall": {
+        "mean": 0.10222222222222221,
+        "std": 0.0649406186497887
+      },
+      "f1": {
+        "mean": 0.11388888888888889,
+        "std": 0.07370277311900887
+      },
+      "content_quality": {
+        "mean": 0.19777777777777777,
+        "std": 0.050774522412330714
+      },
+      "avg_chunks": 871.8,
+      "num_documents": 5
+    }
+  },
+  "final_metrics": {
+    "Fixed-Size Rolling Window": {
+      "retrieval_accuracy": 0.27499999999999997,
+      "answer_quality": 0.522962962962963,
+      "factual_consistency": 0.2444444444444445
+    },
+    "Sentence Overlap Chunking": {
+      "retrieval_accuracy": 0.11388888888888889,
+      "answer_quality": 0.19777777777777777,
+      "factual_consistency": 0.14666666666666664
+    },
+    "Structured Chunking": {
+      "retrieval_accuracy": 0.05828282828282828,
+      "answer_quality": 0.10296296296296296,
+      "factual_consistency": 0.07333333333333335
+    }
+  },
+  "evaluation_info": {
+    "num_documents": 5,
+    "num_queries": 6,
+    "documents_tested": [
+      "Lemis",
+      "Neural Networks Paper",
+      "Nlp Transformers Paper",
+      "Computer Vision Paper",
+      "Reinforcement Learning Paper"
+    ]
+  }
+}
