@@ -13,6 +13,7 @@ from pdf_ingestion.ingest.strategies import (  # noqa
     SentenceOverlapChunking,
     get_all_strategies,
     process_document,
+    process_pdf,
 )
 
 # Retrieval
@@ -22,5 +23,8 @@ from pdf_ingestion.retrieval.retriever import ChunkRetriever  # noqa
 from pdf_ingestion.utils.pdf_utils import load_document, pdf_to_text, is_pdf  # noqa
 from pdf_ingestion.utils.image_utils import CLIPImageProcessor  # noqa
 
-# Evaluation helpers
-from pdf_ingestion.evaluation.rag_grade import grade_answer  # noqa
+# Note: we no longer import ``rag_grade`` here to avoid hard dependency on an
+# OpenAI key at *import time*.  Users can call `from pdf_ingestion.evaluation
+# import grade_answer` which performs a lazy import when (and only when) they
+# have configured the key. This keeps base package import lightweight and test
+# friendly.

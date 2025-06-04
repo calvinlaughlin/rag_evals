@@ -1,21 +1,32 @@
 import types
 import builtins
 import pytest
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 
 @pytest.fixture(autouse=True)
 def mock_openai(monkeypatch):
-    """Auto-mock openai.ChatCompletion.create so tests run offline."""
+    """Auto-mock OpenAI client so tests run offline."""
     dummy_json = '{"relevance": 1, "faithfulness": 1, "depth": 1}'
     dummy_choice = types.SimpleNamespace(message=types.SimpleNamespace(content=dummy_json))
-    dummy_resp = types.SimpleNamespace(choices=[dummy_choice], usage={"prompt_tokens": 0, "completion_tokens": 0})
+    dummy_usage = types.SimpleNamespace(prompt_tokens=0, completion_tokens=0, total_tokens=0)
+    dummy_resp = types.SimpleNamespace(choices=[dummy_choice], usage=dummy_usage)
 
-    def _fake_create(*args, **kwargs):
-        return dummy_resp
+    class MockChatCompletions:
+        def create(self, *args, **kwargs):
+            return dummy_resp
+
+    class MockClient:
+        def __init__(self, *args, **kwargs):
+            self.chat = types.SimpleNamespace(completions=MockChatCompletions())
 
     import importlib
     openai = importlib.import_module("openai")
-    monkeypatch.setattr(openai.ChatCompletion, "create", _fake_create)
+    monkeypatch.setattr(openai, "OpenAI", MockClient)
     yield
 
 
@@ -47,7 +58,26 @@ def mock_sentence_transformer(monkeypatch):
 
         def encode(self, texts, show_progress_bar=False, convert_to_numpy=True):
             n = len(texts)
-            return np.zeros((n, self.dim), dtype="float32")
+            embeddings = np.random.RandomState(42).randn(n, self.dim).astype("float32")
+            
+            # Make embeddings deterministic based on content for testing
+            for i, text in enumerate(texts):
+                if isinstance(text, str):
+                    # Create a simple hash-based embedding that's consistent
+                    # Put "Reducto" content first by giving it a specific pattern
+                    if "Reducto" in text:
+                        embeddings[i, :10] = 1.0  # High values in first dimensions
+                    elif "Fixed-size" in text:
+                        embeddings[i, 10:20] = 1.0  # Different pattern
+                    elif "Sentence" in text:
+                        embeddings[i, 20:30] = 1.0  # Different pattern
+            
+            # Normalize embeddings
+            norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+            norms = np.where(norms == 0, 1, norms)  # Avoid division by zero
+            embeddings = embeddings / norms
+            
+            return embeddings
 
     import importlib
     st_mod = importlib.import_module("sentence_transformers")

@@ -14,7 +14,7 @@ import sys
 # Add parent directory to path so we can import from the pdf_ingestion package
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from pdf_ingestion import load_document, get_all_strategies, process_document
+from pdf_ingestion import load_document, get_all_strategies, process_document, process_pdf, is_pdf
 
 
 def main():
@@ -33,12 +33,14 @@ def main():
     if not os.path.exists(args.document):
         raise FileNotFoundError(f"Document not found: {args.document}")
 
-    # Load document content
-    document_text = load_document(args.document)
-    
-    # Process document with different strategies
     strategies = get_all_strategies()
-    results = process_document(document_text, strategies)
+
+    if is_pdf(args.document):
+        results = process_pdf(args.document, strategies)
+    else:
+        # Load plain-text content then chunk
+        document_text = load_document(args.document)
+        results = process_document(document_text, strategies)
     
     # Print summary of chunks produced by each strategy
     print("\nChunking Summary:")

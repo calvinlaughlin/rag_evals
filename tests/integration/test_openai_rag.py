@@ -1,9 +1,13 @@
 import os
 import pytest
+from dotenv import load_dotenv
 
 from pdf_ingestion.ingest import process_document
 from pdf_ingestion.utils import load_document
 from pdf_ingestion.retrieval import ChunkRetriever
+
+# Load environment variables
+load_dotenv()
 
 OPENAI_KEY = os.getenv("OPENAI_API_KEY")
 
@@ -30,9 +34,11 @@ def test_openai_answer_generation(sample_doc_path="sample_document.txt"):
     results = retr.query("What is Reducto?", top_k=3)
     context = "\n\n".join(c["content"] for c in results)
 
-    import openai
+    from openai import OpenAI
+    
+    client = OpenAI(api_key=OPENAI_KEY)
 
-    resp = openai.ChatCompletion.create(
+    resp = client.chat.completions.create(
         model="gpt-3.5-turbo-0125",
         messages=[
             {"role": "system", "content": "Answer using the context strictly."},

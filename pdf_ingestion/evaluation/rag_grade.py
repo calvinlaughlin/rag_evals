@@ -22,14 +22,20 @@ import os
 import time
 from typing import Dict, Any
 
-import openai
+from dotenv import load_dotenv
+from openai import OpenAI
+
+# Load environment variables
+load_dotenv()
 
 # ──────────────────────────────────────────────────────────────────────────────
 # OpenAI setup
 # ──────────────────────────────────────────────────────────────────────────────
-openai.api_key = os.getenv("OPENAI_API_KEY")
-if not openai.api_key:
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
     raise EnvironmentError("Set OPENAI_API_KEY env var to use the grader.")
+
+client = OpenAI(api_key=api_key)
 
 MODEL_NAME = "gpt-4o"  
 MAX_RETRIES = 3
@@ -63,7 +69,7 @@ def grade_answer(question: str, answer: str, context: str) -> Dict[str, int]:
     user_content = USER_TEMPLATE.format(question=question, answer=answer, context=context)
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            resp = openai.ChatCompletion.create(
+            resp = client.chat.completions.create(
                 model=MODEL_NAME,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
